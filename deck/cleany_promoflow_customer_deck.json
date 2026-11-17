@@ -1,0 +1,286 @@
+{
+  "title": "Cleany PromoFlow — Customer Discussion",
+  "template_id": "12HWqnLB_0X49H9GsqjvC4lwQrH9CBZK92hsf8Hj6PhU",
+  "theme": "light",
+  "required_demo_links": [
+    {
+      "label": "Open the PromoFlow live demonstration",
+      "url": "https://promoflow-cleany-7474658488596447.aws.databricksapps.com",
+      "slide_id": "demo"
+    }
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "title",
+      "title": "Cleany PromoFlow",
+      "subtitle": "Put promotion investment behind profitable, executable plans",
+      "notes": {
+        "purpose": "Open at executive altitude and establish the decision outcome.",
+        "talk_track": "Cleany has an opportunity to connect promotion performance, forward demand, commercial events, and inventory feasibility in one governed planning journey.",
+        "evidence": [
+          "Customer and product data in the demonstration are synthetic.",
+          "The solution is running in the Cleany PromoFlow demonstration environment."
+        ],
+        "transition": "Introduce the people in the room and their decision roles.",
+        "likely_question": "What decision does this solution improve?"
+      }
+    },
+    {
+      "id": "introductions",
+      "layout": "content_2col",
+      "title": "Introductions",
+      "columns": [
+        "Databricks",
+        "Filipe Deo\nField Engineering\nSolution architecture and demonstration",
+        "Cleany",
+        "Jeff — VP Revenue Growth Management\nSarah — VP Supply Chain\nTrevor — Promotion Planner\nEmily — Supply Planner"
+      ],
+      "notes": {
+        "purpose": "Make roles and interests explicit before discussing the solution.",
+        "talk_track": "Filipe will facilitate the discussion and demonstration. Jeff is focused on profitable growth, Sarah on availability and inventory efficiency, Trevor on scenario planning and approval, and Emily on feasibility inputs and execution alignment.",
+        "evidence": [
+          "Personas reflect the intended cross-functional buying and operating group."
+        ],
+        "transition": "Set expectations for the call with a concise agenda.",
+        "likely_question": "Who owns the final promotion decision?"
+      }
+    },
+    {
+      "id": "agenda",
+      "layout": "card_quad",
+      "title": "Today’s discussion",
+      "columns": [
+        "1  Business outcomes\nWhat should improve and how we measure it",
+        "2  Decision journey\nHow data and AI connect the workflow",
+        "3  Live demonstration\nFrom portfolio attention to approval",
+        "4  Pilot proposal\nScope, measures, and next decision"
+      ],
+      "notes": {
+        "purpose": "Give both executive and domain stakeholders a clear meeting contract.",
+        "talk_track": "We will align on outcomes first, then show the connected decision journey, demonstrate the workflow, and finish with a measurable pilot proposal.",
+        "evidence": [
+          "Agenda intentionally leads with outcomes rather than architecture."
+        ],
+        "transition": "Lead with the quantified opportunity and distinguish potential from realized value.",
+        "likely_question": "How much time is allocated to the demonstration?"
+      }
+    },
+    {
+      "id": "headline",
+      "layout": "power_statement",
+      "title": "$642K modeled margin opportunity — $267K is already supply-ready",
+      "notes": {
+        "purpose": "Anchor the discussion on the modeled value pool and executable subset.",
+        "talk_track": "Across 204 profitable modeled opportunities, the current value pool represents about $642K in expected incremental margin. Ninety-three READY opportunities represent $267K. These are modeled opportunities, not booked savings.",
+        "evidence": [
+          "204 profitable modeled opportunities in planner_opportunities.",
+          "$642,397 modeled incremental margin across all profitable opportunities.",
+          "$267,100 modeled incremental margin across 93 READY opportunities."
+        ],
+        "transition": "Explain why Cleany cannot consistently capture that value today.",
+        "likely_question": "Is the $642K a realized benefit?"
+      }
+    },
+    {
+      "id": "challenge",
+      "layout": "cards_3col",
+      "title": "The promotion decision is fragmented",
+      "columns": [
+        "Commercial evidence",
+        "Past performance, mechanics, ROI, and events are analyzed separately.",
+        "Planning workflow",
+        "Scenario creation and approval cross multiple systems and spreadsheets.",
+        "Availability risk",
+        "Inventory and receipt constraints are often discovered after commercial commitment."
+      ],
+      "notes": {
+        "purpose": "Frame a specific CPG planning problem rather than a generic data challenge.",
+        "talk_track": "The issue is not a lack of data; it is the separation of commercial evidence, planning workflow, and availability context at the moment of decision.",
+        "evidence": [
+          "Synthetic source contracts represent POS, TPM, ERP/MDM, WMS, IBP/OMS, and commercial-calendar feeds."
+        ],
+        "transition": "Show the outcome scorecard that connects the problem to buyer KPIs.",
+        "likely_question": "Which existing system does PromoFlow replace?"
+      }
+    },
+    {
+      "id": "scorecard",
+      "layout": "card_quad",
+      "title": "Outcome scorecard",
+      "columns": [
+        "18\nSubmitted or pending approval",
+        "22\nPlans requiring availability review",
+        "$267K\nREADY modeled margin potential",
+        "$3.0M\nHistorical revenue at risk"
+      ],
+      "notes": {
+        "purpose": "Present current decision workload, executable opportunity, and historical exposure in one view.",
+        "talk_track": "The operational view currently has 18 submitted or pending items and 22 plans requiring availability review. The opportunity pool includes $267K of READY modeled margin. Historical promotions with lost sales recorded $3.0M of revenue at risk.",
+        "evidence": [
+          "Live Overview endpoint: 51 upcoming records, 18 submitted/pending, 22 at risk.",
+          "Historical promotion_explorer: $3,005,912 revenue at risk across 217 promotions.",
+          "Modeled future values are potential, not realized savings."
+        ],
+        "transition": "Define exactly how improvement will be measured after rollout.",
+        "likely_question": "What does at risk mean?"
+      }
+    },
+    {
+      "id": "measurement",
+      "layout": "content_2col",
+      "title": "Measure realized impact, not modeled promise",
+      "columns": [
+        "Leading indicators",
+        "Approval cycle time\nShare of plans reviewed before commitment\nREADY opportunity conversion\nForecast error and override rate",
+        "Realized outcomes",
+        "Incremental margin and trade ROI\nRevenue at risk from lost sales\nAvailability at event start\nPlanner hours saved"
+      ],
+      "notes": {
+        "purpose": "Establish a credible measurement method and avoid relabeling predictions as savings.",
+        "talk_track": "The model creates a prioritized value pool. Realized value is measured after execution against prior cycles and, where possible, matched non-pilot promotions. We separate workflow adoption, forecast quality, and commercial outcomes.",
+        "evidence": [
+          "Historical portfolio ROI baseline is 2.38x.",
+          "Historical revenue-at-risk baseline is $3.0M for promotions with lost sales.",
+          "No causal claim is made from observational uplift."
+        ],
+        "transition": "Move from the scorecard into the connected decision journey.",
+        "likely_question": "How will you attribute improvement to PromoFlow?"
+      }
+    },
+    {
+      "id": "divider",
+      "layout": "divider_dark",
+      "title": "From fragmented planning to one governed decision journey",
+      "notes": {
+        "purpose": "Create a visual transition from business outcomes to solution and demonstration.",
+        "talk_track": "The solution connects evidence, prediction, feasibility, and human approval without hiding the underlying economics.",
+        "evidence": [
+          "The implemented workflow spans Lakeflow, Unity Catalog, MLflow, Lakebase, Unity Gateway, Genie, and Databricks Apps."
+        ],
+        "transition": "Describe the solution in three business-relevant layers.",
+        "likely_question": "Which parts are operational today?"
+      }
+    },
+    {
+      "id": "solution",
+      "layout": "cards_3col",
+      "title": "One platform, three responsibilities",
+      "columns": [
+        "Governed foundation",
+        "Lakeflow ingests enterprise feeds\nUnity Catalog governs data and AI",
+        "Decision intelligence",
+        "MLflow scores opportunities\nGenie answers portfolio questions",
+        "Operational workflow",
+        "Lakebase serves plans and decisions\nDatabricks Apps guides human approval"
+      ],
+      "notes": {
+        "purpose": "Explain the architecture without turning the presentation into a feature tour.",
+        "talk_track": "The lakehouse is the governed analytical record, AI prioritizes and explains opportunities, and Lakebase plus the app provide the transactional decision experience.",
+        "evidence": [
+          "1,200 historical promotions, 48 imported TPM plans, and 204 opportunities materialized.",
+          "Unity Gateway generates narratives from governed scenario facts.",
+          "Reverse Lakehouse Sync is intentionally outside the demonstrated scope."
+        ],
+        "transition": "Show exactly what will be demonstrated in the application.",
+        "likely_question": "Why do we need both the lakehouse and Lakebase?"
+      }
+    },
+    {
+      "id": "demo",
+      "layout": "content_basic",
+      "title": "Live demonstration: tell, show, decide",
+      "body": "Overview — prioritize approvals, risk, and uncovered events\nPast Promotion Analysis — learn from margin, ROI, uplift, and lost sales\nUpcoming Promotions — inspect readiness, receipts, and shortfalls\nOpportunity Inbox — identify event-aligned value pools\nScenario Studio — compare governed alternatives side by side\nDecision Workspace — approve and generate a governed AI brief\nGenie — ask the same governed data in natural language",
+      "bullets": true,
+      "notes": {
+        "purpose": "Set up the demonstration before opening the application.",
+        "talk_track": "I will follow one story: identify the portfolio priority, learn from history, inspect an upcoming plan, create and compare a scenario, approve it with availability context, and ask a follow-up question through Genie.",
+        "evidence": [
+          "Databricks App deployment is RUNNING, ACTIVE, and SUCCEEDED.",
+          "Authenticated endpoints return 1,200 history rows, 51 upcoming records, and 204 opportunities."
+        ],
+        "transition": "After the demo, summarize the current operational portfolio that the workflow exposes.",
+        "likely_question": "Can users filter by recognizable product and market names?"
+      }
+    },
+    {
+      "id": "current",
+      "layout": "card_quad",
+      "title": "Current planning portfolio",
+      "columns": [
+        "51\nUpcoming operational records",
+        "18\nSubmitted or pending approval",
+        "22\nReview or constrained plans",
+        "7,930\nProjected shortfall units"
+      ],
+      "notes": {
+        "purpose": "Land the demonstration with the size of the decision queue and risk exposure.",
+        "talk_track": "The combined operational view includes imported plans and app-authored scenarios. It provides a single queue for what is upcoming, awaiting approval, and constrained.",
+        "evidence": [
+          "28 of 51 current records are approved.",
+          "Six plans combine no planned receipt with a projected shortfall.",
+          "One upcoming commercial event is not yet covered by a plan."
+        ],
+        "transition": "Connect forward planning to the historical evidence base.",
+        "likely_question": "Why are these counts higher than the imported TPM plan counts?"
+      }
+    },
+    {
+      "id": "history",
+      "layout": "card_quad",
+      "title": "Historical evidence sets the baseline",
+      "columns": [
+        "$71.5M\nRealized incremental margin",
+        "2.38x\nPortfolio ROI",
+        "$3.0M\nRevenue at risk from lost sales",
+        "24.4%\nAverage observational uplift"
+      ],
+      "notes": {
+        "purpose": "Show the historical baseline used to learn patterns and measure future improvement.",
+        "talk_track": "The history demonstrates scale and gives us a baseline for economics and availability exposure. The 24.4 percent average uplift is observational. We will not claim it as causal incrementality.",
+        "evidence": [
+          "1,200 historical promotions.",
+          "$71,533,009 incremental margin and $30,027,677 trade spend.",
+          "217 promotions recorded 321,696 lost units and $3,005,912 revenue at risk."
+        ],
+        "transition": "Translate the baseline and value pool into a controlled pilot scorecard.",
+        "likely_question": "Were all historical promotions successful?"
+      }
+    },
+    {
+      "id": "pilot",
+      "layout": "content_2col",
+      "title": "Proposed pilot: prove value in one planning cycle",
+      "columns": [
+        "Scope",
+        "One category\nTwo retail clusters\nOne commercial event window\nRGM, promotion, supply, and data owners",
+        "Success measures",
+        "Approval cycle time\nREADY opportunity conversion\nRealized incremental margin and ROI\nForecast error and revenue-at-risk reduction"
+      ],
+      "notes": {
+        "purpose": "Propose a bounded next step with measurable commercial and operational outcomes.",
+        "talk_track": "Start small enough to learn quickly but large enough to include the full decision journey. Agree the baseline and measurement protocol before the first recommendation is approved.",
+        "evidence": [
+          "The prototype already supports category, product, market, event, approval, and readiness filters.",
+          "Historical and forward metrics are available at promotion and opportunity level."
+        ],
+        "transition": "Close with the decision requested from the customer team.",
+        "likely_question": "How long would the pilot take?"
+      }
+    },
+    {
+      "id": "close",
+      "layout": "power_statement_2",
+      "title": "Confirm the pilot category, clusters, owners, and baseline measures",
+      "notes": {
+        "purpose": "End with a specific, low-friction customer decision.",
+        "talk_track": "The requested next step is to nominate the pilot scope and owners, then validate source mappings and baseline measures in a working session.",
+        "evidence": [
+          "The demonstration uses synthetic data; production onboarding begins with source-contract and KPI validation."
+        ],
+        "transition": "Open the discussion for business and technical questions.",
+        "likely_question": "What do you need from Cleany to start?"
+      }
+    }
+  ]
+}

@@ -28,7 +28,9 @@ Reverse Lakehouse Sync is intentionally out of scope. The demo proves lakehouse-
 ## Submission artifacts
 
 - [Final execution evidence](docs/execution_evidence/FINAL_SUBMISSION_EVIDENCE.md)
-- [Submission deck](deck/promoflow_fe_bar_deck.pdf)
+- [Customer presentation deck](deck/cleany_promoflow_customer_deck.pdf)
+- [Presentation source specification](deck/cleany_promoflow_customer_deck.json)
+- [Editable Google Slides presentation](https://docs.google.com/presentation/d/1RcG_ZH07umiimmvIHRIJchN6z4XGiuAR5ED6fw0quUE/edit)
 - [Roleplay package](docs/roleplay)
 - [Architecture](docs/architecture.md)
 - [Submission answers](docs/submission_answers.md)
