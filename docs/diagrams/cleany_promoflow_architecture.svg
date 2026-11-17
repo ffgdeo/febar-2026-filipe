@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#101828}.subtitle{font:18px Arial,sans-serif;fill:#667085}
+      .layer{font:700 18px Arial,sans-serif;fill:#101828}.node{font:700 16px Arial,sans-serif;fill:#101828}.sub{font:14px Arial,sans-serif;fill:#475467}
+      .small{font:13px Arial,sans-serif;fill:#667085}.white{fill:#fff}.orange{fill:#FF6B35}.edge{stroke:#98A2B3;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#FF6B35;stroke-width:2;stroke-dasharray:7 7;fill:none}.box{stroke-width:2}.shadow{filter:url(#shadow)}
+    </style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#101828" flood-opacity=".10"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#98A2B3"/></marker>
+    <linearGradient id="dbx" x1="0" x2="1"><stop offset="0" stop-color="#FF6B35"/><stop offset="1" stop-color="#FF3621"/></linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="18" height="900" fill="url(#dbx)"/>
+  <text x="58" y="62" class="title">Cleany PromoFlow — governed promotion decision architecture</text>
+  <text x="58" y="94" class="subtitle">From fragmented commercial and supply signals to profitable, executable promotion decisions</text>
+
+  <!-- flow connectors -->
+  <path d="M280 424 H330" class="edge"/><path d="M595 424 H645" class="edge"/><path d="M910 424 H960" class="edge"/><path d="M1225 424 H1275" class="edge"/>
+
+  <!-- Sources -->
+  <rect x="45" y="140" rx="20" width="235" height="570" fill="#FFFFFF" stroke="#CBD5E1" class="box shadow"/>
+  <circle cx="77" cy="178" r="17" fill="#667085"/><text x="72" y="184" class="white" style="font:700 17px Arial">1</text>
+  <text x="105" y="184" class="layer">Enterprise inputs</text>
+  <g>
+    <rect x="66" y="220" rx="12" width="193" height="70" fill="#F5F3FF" stroke="#8B5CF6" class="box"/><text x="86" y="251" class="node">POS sales</text><text x="86" y="273" class="sub">Promotion history</text>
+    <rect x="66" y="310" rx="12" width="193" height="70" fill="#F5F3FF" stroke="#8B5CF6" class="box"/><text x="86" y="341" class="node">Product economics</text><text x="86" y="363" class="sub">Price and unit cost</text>
+    <rect x="66" y="400" rx="12" width="193" height="70" fill="#F5F3FF" stroke="#8B5CF6" class="box"/><text x="86" y="431" class="node">Availability</text><text x="86" y="453" class="sub">Inventory and receipts</text>
+    <rect x="66" y="490" rx="12" width="193" height="70" fill="#F5F3FF" stroke="#8B5CF6" class="box"/><text x="86" y="521" class="node">TPM plans</text><text x="86" y="543" class="sub">Imported promotions</text>
+    <rect x="66" y="580" rx="12" width="193" height="70" fill="#F5F3FF" stroke="#8B5CF6" class="box"/><text x="86" y="611" class="node">Commercial events</text><text x="86" y="633" class="sub">Customer calendar</text>
+  </g>
+
+  <!-- Lakehouse -->
+  <rect x="330" y="140" rx="20" width="265" height="570" fill="#FFFFFF" stroke="#F59E0B" class="box shadow"/>
+  <circle cx="362" cy="178" r="17" class="orange"/><text x="357" y="184" class="white" style="font:700 17px Arial">2</text>
+  <text x="390" y="184" class="layer">Governed lakehouse</text>
+  <rect x="354" y="224" rx="14" width="217" height="82" fill="#EFF6FF" stroke="#3B82F6" class="box"/><text x="374" y="257" class="node">Lakeflow</text><text x="374" y="280" class="sub">Bronze → Silver → Gold</text>
+  <path d="M462 306 V341" class="edge"/>
+  <rect x="354" y="346" rx="14" width="217" height="100" fill="#FFFBEB" stroke="#F59E0B" class="box"/><text x="374" y="380" class="node">Delta Lake</text><text x="374" y="403" class="sub">History • events</text><text x="374" y="425" class="sub">features • feasibility</text>
+  <path d="M462 446 V481" class="edge"/>
+  <rect x="354" y="486" rx="14" width="217" height="100" fill="#FEF2F2" stroke="#EF4444" class="box"/><text x="374" y="520" class="node">Unity Catalog</text><text x="374" y="543" class="sub">Governance • lineage</text><text x="374" y="565" class="sub">permissions • model access</text>
+  <rect x="354" y="616" rx="18" width="217" height="48" fill="#FFF7ED" stroke="#FF6B35"/><text x="378" y="646" class="node">Governed metrics</text>
+
+  <!-- Intelligence -->
+  <rect x="645" y="140" rx="20" width="265" height="570" fill="#FFFFFF" stroke="#FF6B35" class="box shadow"/>
+  <circle cx="677" cy="178" r="17" class="orange"/><text x="672" y="184" class="white" style="font:700 17px Arial">3</text>
+  <text x="705" y="184" class="layer">Decision intelligence</text>
+  <rect x="669" y="224" rx="14" width="217" height="104" fill="#FFF7ED" stroke="#FF6B35" class="box"/><text x="689" y="258" class="node">MLflow</text><text x="689" y="281" class="sub">Demand and uplift</text><text x="689" y="303" class="sub">Margin opportunity scoring</text>
+  <path d="M777 328 V363" class="edge"/>
+  <rect x="669" y="368" rx="14" width="217" height="92" fill="#FFFBEB" stroke="#F59E0B" class="box"/><text x="689" y="402" class="node">Scored opportunities</text><text x="689" y="425" class="sub">Profitability + readiness</text><text x="689" y="447" class="sub">READY / REVIEW / CONSTRAINED</text>
+  <rect x="669" y="496" rx="14" width="217" height="70" fill="#ECFDF3" stroke="#12B76A" class="box"/><text x="689" y="527" class="node">Genie</text><text x="689" y="549" class="sub">Natural-language analysis</text>
+  <rect x="669" y="590" rx="14" width="217" height="70" fill="#FFF7ED" stroke="#FF6B35" class="box"/><text x="689" y="621" class="node">Unity Gateway</text><text x="689" y="643" class="sub">Grounded decision briefs</text>
+
+  <!-- Operations -->
+  <rect x="960" y="140" rx="20" width="265" height="570" fill="#FFFFFF" stroke="#12B76A" class="box shadow"/>
+  <circle cx="992" cy="178" r="17" class="orange"/><text x="987" y="184" class="white" style="font:700 17px Arial">4</text>
+  <text x="1020" y="184" class="layer">Operational planning</text>
+  <rect x="984" y="224" rx="14" width="217" height="92" fill="#F0FDF4" stroke="#12B76A" class="box"/><text x="1004" y="258" class="node">Lakebase sync</text><text x="1004" y="281" class="sub">Imported TPM plans</text><text x="1004" y="303" class="sub">Low-latency serving</text>
+  <path d="M1092 316 V351" class="edge"/>
+  <rect x="984" y="356" rx="14" width="217" height="110" fill="#F0FDF4" stroke="#12B76A" class="box"/><text x="1004" y="389" class="node">Lakebase operations</text><text x="1004" y="412" class="sub">Scenarios • versions</text><text x="1004" y="434" class="sub">Approvals • audit</text><text x="1004" y="456" class="sub">AI decision briefs</text>
+  <path d="M1092 466 V501" class="edge"/>
+  <rect x="984" y="506" rx="14" width="217" height="140" fill="#EEF4FF" stroke="#6172F3" class="box"/><text x="1004" y="540" class="node">Databricks App</text><text x="1004" y="565" class="sub">Portfolio overview</text><text x="1004" y="588" class="sub">Scenario comparison</text><text x="1004" y="611" class="sub">Availability-aware</text><text x="1004" y="633" class="sub">human approval</text>
+
+  <!-- Outcomes -->
+  <rect x="1275" y="140" rx="20" width="280" height="570" fill="#FFFFFF" stroke="#6172F3" class="box shadow"/>
+  <circle cx="1307" cy="178" r="17" class="orange"/><text x="1302" y="184" class="white" style="font:700 17px Arial">5</text>
+  <text x="1335" y="184" class="layer">Business decisions</text>
+  <rect x="1300" y="230" rx="14" width="230" height="76" fill="#EEF4FF" stroke="#6172F3" class="box"/><text x="1320" y="263" class="node">Revenue management</text><text x="1320" y="286" class="sub">Margin and ROI</text>
+  <rect x="1300" y="331" rx="14" width="230" height="76" fill="#EEF4FF" stroke="#6172F3" class="box"/><text x="1320" y="364" class="node">Promotion planner</text><text x="1320" y="387" class="sub">Compare and approve</text>
+  <rect x="1300" y="432" rx="14" width="230" height="76" fill="#EEF4FF" stroke="#6172F3" class="box"/><text x="1320" y="465" class="node">Supply planner</text><text x="1320" y="488" class="sub">Feasibility context</text>
+  <rect x="1300" y="553" rx="16" width="230" height="94" fill="url(#dbx)"/><text x="1320" y="588" class="white" style="font:700 18px Arial">Profitable, executable</text><text x="1320" y="616" class="white" style="font:700 18px Arial">promotion decisions</text>
+
+  <!-- governance / scope -->
+  <rect x="45" y="750" rx="16" width="1510" height="80" fill="#FFF7ED" stroke="#FF6B35" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="72" y="781" class="node">Governed end to end by Unity Catalog</text>
+  <text x="72" y="807" class="sub">Inventory and receipts inform promotion readiness; the prototype does not create supply-chain actions.</text>
+  <text x="1550" y="868" text-anchor="end" class="small">Implemented prototype scope • Synthetic Cleany data • No reverse sync or automated supply execution</text>
+</svg>
