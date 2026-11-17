@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "config": {
+    "sample_questions": [
+      {"id": "10000000000000000000000000000001", "question": ["How is the historical promotion portfolio performing?"]},
+      {"id": "10000000000000000000000000000002", "question": ["Which products and mechanics produced the strongest promotion ROI?"]},
+      {"id": "10000000000000000000000000000003", "question": ["How many upcoming promotion plans are awaiting approval or have inventory risk?"]},
+      {"id": "10000000000000000000000000000004", "question": ["Which upcoming promotions have no planned receipts and a projected shortfall?"]},
+      {"id": "10000000000000000000000000000005", "question": ["Which commercial events have the strongest modeled opportunities by incremental margin?"]},
+      {"id": "10000000000000000000000000000006", "question": ["Show promotion opportunities that are profitable but constrained by availability."]}
+    ]
+  },
+  "data_sources": {
+    "tables": [
+      {"identifier": "promoflow.promoflow_gold.cpg_event_calendar", "description": ["Governed future commercial-event calendar sourced from the Cleany TPM feed. It contains event facts and no authored uplift assumption."], "column_configs": [
+        {"column_name": "category_affinity", "description": ["Product category to which the event applies."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["category"]},
+        {"column_name": "event_end_date", "description": ["Last date of the commercial event."]},
+        {"column_name": "event_id", "description": ["Stable commercial-event identifier."]},
+        {"column_name": "event_name", "description": ["Business-facing event name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["commercial event", "occasion"]},
+        {"column_name": "event_start_date", "description": ["First date of the commercial event."]},
+        {"column_name": "event_type", "description": ["Commercial classification such as retailer event or seasonal occasion."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "source_file_path", "exclude": true},
+        {"column_name": "source_system", "description": ["TPM or calendar system that supplied the event."]}
+      ]},
+      {"identifier": "promoflow.promoflow_gold.planned_promotions", "description": ["Future promotion plans imported from TPM, enriched with product and market names and derived inventory readiness. Readiness is decision support and creates no supply action."], "column_configs": [
+        {"column_name": "availability_coverage_ratio", "description": ["Available incremental units divided by planned incremental units; multiply by 100 for percent presentation."], "synonyms": ["coverage", "inventory coverage"]},
+        {"column_name": "category", "description": ["Cleany product category."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "cluster_name", "description": ["Business-facing retail market or store-cluster name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["market", "region"]},
+        {"column_name": "discount_pct", "description": ["Planned discount as a decimal rate; multiply by 100 for percent presentation."], "synonyms": ["discount", "promotion depth"]},
+        {"column_name": "event_id", "description": ["Commercial-event identifier."]},
+        {"column_name": "event_name", "description": ["Commercial event associated with the plan."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "plan_id", "description": ["Unique imported promotion-plan identifier."]},
+        {"column_name": "plan_status", "description": ["TPM workflow state: DRAFT, PENDING_APPROVAL, or APPROVED."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["approval status"]},
+        {"column_name": "planned_receipt_units", "description": ["Planned inbound units available over the event horizon."], "synonyms": ["shipments", "receipts", "inbound"]},
+        {"column_name": "product_name", "description": ["Cleany product name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["product"]},
+        {"column_name": "projected_shortfall_units", "description": ["Positive planned incremental-demand shortfall after inventory, receipts, commitments, and safety stock."], "synonyms": ["shortfall", "inventory gap"]},
+        {"column_name": "readiness_status", "description": ["Derived feasibility state: READY, REVIEW, or CONSTRAINED."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["availability status", "inventory risk"]},
+        {"column_name": "risk_reason", "description": ["Derived factual reason for readiness, including missing supply plan, no planned receipt, projected shortfall, or limited buffer."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "sku_id", "description": ["Stable product identifier."], "synonyms": ["SKU"]},
+        {"column_name": "start_date", "description": ["Planned promotion start date."]}
+      ]},
+      {"identifier": "promoflow.promoflow_gold.planner_opportunities", "description": ["Future event-aligned promotion opportunities combining positive-margin historical evidence, registered-model demand scores, governed prices, costs, and transparent economics."], "column_configs": [
+        {"column_name": "category", "description": ["Cleany product category."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "cluster_name", "description": ["Business-facing retail market or store-cluster name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["market", "region"]},
+        {"column_name": "confidence_band", "description": ["HIGH, MEDIUM, or LOW evidence-confidence label."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "economics_status", "description": ["Transparent economics gate for the opportunity."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "event_name", "description": ["Commercial event for which the opportunity was generated."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "expected_incremental_margin", "description": ["Modeled incremental gross margin after promotion investment."], "synonyms": ["expected margin", "incremental profit"]},
+        {"column_name": "expected_modeled_uplift_pct", "description": ["Predicted promotion uplift as a decimal rate; multiply by 100 for percent presentation. It is not causal."], "synonyms": ["forecast uplift", "predicted uplift"]},
+        {"column_name": "expected_promotion_roi", "description": ["Expected incremental margin divided by expected trade spend."], "synonyms": ["expected ROI", "promotion return"]},
+        {"column_name": "model_name", "exclude": true},
+        {"column_name": "model_version", "description": ["Registered model version used to score the opportunity."]},
+        {"column_name": "opportunity_id", "description": ["Unique event, SKU, and market opportunity identifier."]},
+        {"column_name": "recommended_product_name", "description": ["Candidate Cleany product name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["product"]},
+        {"column_name": "recommended_sku_id", "description": ["Candidate product identifier."], "synonyms": ["SKU"]}
+      ]},
+      {"identifier": "promoflow.promoflow_gold.promotion_explorer", "description": ["Completed historical promotions with observational uplift, trade spend, incremental margin, ROI, lost sales, revenue at risk, and an explicit success classification."], "column_configs": [
+        {"column_name": "category", "description": ["Cleany product category."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "cluster_name", "description": ["Business-facing retail market or store-cluster name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["market", "region"]},
+        {"column_name": "incremental_margin", "description": ["Incremental gross margin after promotion investment. Positive is profitable."], "synonyms": ["promotion profit", "incremental profit"]},
+        {"column_name": "lost_sales_units", "description": ["Observed unmet demand during the promotion."], "synonyms": ["lost units"]},
+        {"column_name": "mechanic", "description": ["Promotion execution mechanic."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["promotion type", "tactic"]},
+        {"column_name": "modeled_uplift_rate", "description": ["Observational uplift relative to the modeled baseline, already expressed in percentage points; not a causal treatment effect."], "synonyms": ["historical uplift"]},
+        {"column_name": "product_name", "description": ["Cleany product name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["product"]},
+        {"column_name": "promotion_id", "description": ["Unique historical promotion identifier."]},
+        {"column_name": "promotion_roi", "description": ["Incremental margin divided by trade spend."], "synonyms": ["ROI", "promotion return"]},
+        {"column_name": "revenue_at_risk", "description": ["Estimated promotion revenue associated with lost-sales units."]},
+        {"column_name": "start_date", "description": ["Historical promotion start date."]},
+        {"column_name": "success_classification", "description": ["Outcome: successful and available, commercially successful but supply constrained, volume gain with margin failure, or underperforming."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["outcome", "success"]},
+        {"column_name": "trade_spend", "description": ["Promotional discount investment."], "synonyms": ["trade investment", "promotion spend"]}
+      ]},
+      {"identifier": "promoflow.promoflow_gold.promotion_feasibility", "description": ["Current event-horizon availability check for modeled promotion opportunities. It compares opening inventory and planned receipts with commitments, safety stock, and incremental promotion demand, without prescribing supply actions."], "column_configs": [
+        {"column_name": "available_for_incremental_promotion_units", "description": ["Units remaining for incremental promotion demand after commitments and safety stock."], "synonyms": ["available units"]},
+        {"column_name": "cluster_name", "description": ["Business-facing retail market or store-cluster name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["market", "region"]},
+        {"column_name": "event_name", "description": ["Commercial event for the opportunity."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "planned_receipt_units", "description": ["Planned inbound units in the event horizon."], "synonyms": ["shipments", "receipts", "inbound"]},
+        {"column_name": "product_name", "description": ["Cleany product name."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["product"]},
+        {"column_name": "projected_shortfall_units", "description": ["Incremental promotion demand not covered by the projected supply position."], "synonyms": ["shortfall", "inventory gap"]},
+        {"column_name": "promotion_demand_coverage_ratio", "description": ["Available incremental units divided by model-scored incremental promotion demand; multiply by 100 for percent presentation."], "synonyms": ["coverage"]},
+        {"column_name": "readiness_reason", "description": ["Factual explanation for the readiness state."], "enable_entity_matching": true, "enable_format_assistance": true},
+        {"column_name": "readiness_status", "description": ["Derived feasibility state: READY, REVIEW, or CONSTRAINED."], "enable_entity_matching": true, "enable_format_assistance": true, "synonyms": ["availability status", "inventory risk"]},
+        {"column_name": "sku_id", "description": ["Stable product identifier."], "synonyms": ["SKU"]}
+      ]}
+    ]
+  },
+  "instructions": {
+    "example_question_sqls": [
+      {"id": "20000000000000000000000000000001", "question": ["How is the historical promotion portfolio performing?"], "sql": ["SELECT COUNT(*) AS promotions, ROUND(SUM(incremental_margin), 2) AS incremental_margin, ROUND(SUM(trade_spend), 2) AS trade_spend, ROUND(SUM(incremental_margin) / NULLIF(SUM(trade_spend), 0), 3) AS portfolio_roi, ROUND(AVG(modeled_uplift_rate), 1) AS average_modeled_uplift_pct, SUM(lost_sales_units) AS lost_sales_units FROM promoflow.promoflow_gold.promotion_explorer"]},
+      {"id": "20000000000000000000000000000002", "question": ["Which products and mechanics produced the strongest promotion ROI?"], "sql": ["SELECT product_name, mechanic, COUNT(*) AS promotions, ROUND(SUM(incremental_margin), 2) AS incremental_margin, ROUND(SUM(incremental_margin) / NULLIF(SUM(trade_spend), 0), 3) AS portfolio_roi, ROUND(AVG(modeled_uplift_rate), 1) AS average_modeled_uplift_pct FROM promoflow.promoflow_gold.promotion_explorer GROUP BY product_name, mechanic HAVING COUNT(*) >= 5 ORDER BY portfolio_roi DESC, incremental_margin DESC LIMIT 20"]},
+      {"id": "20000000000000000000000000000003", "question": ["How many upcoming promotion plans are awaiting approval or have inventory risk?"], "sql": ["SELECT plan_status, readiness_status, COUNT(*) AS promotion_plans, SUM(projected_shortfall_units) AS projected_shortfall_units FROM promoflow.promoflow_gold.planned_promotions GROUP BY plan_status, readiness_status ORDER BY plan_status, readiness_status"]},
+      {"id": "20000000000000000000000000000004", "question": ["Which upcoming promotions have no planned receipts and a projected shortfall?"], "sql": ["SELECT plan_id, event_name, product_name, cluster_name, start_date, planned_incremental_units, projected_opening_inventory_units, planned_receipt_units, projected_shortfall_units, plan_status FROM promoflow.promoflow_gold.planned_promotions WHERE risk_reason = 'NO_PLANNED_RECEIPT_AND_INVENTORY_SHORTFALL' ORDER BY projected_shortfall_units DESC"]},
+      {"id": "20000000000000000000000000000005", "question": ["Which commercial events have the strongest modeled opportunities by incremental margin?"], "sql": ["SELECT event_name, category, COUNT(*) AS opportunities, ROUND(SUM(expected_incremental_margin), 2) AS expected_incremental_margin, ROUND(AVG(expected_promotion_roi), 3) AS average_expected_roi FROM promoflow.promoflow_gold.planner_opportunities GROUP BY event_name, category ORDER BY expected_incremental_margin DESC LIMIT 20"]},
+      {"id": "20000000000000000000000000000006", "question": ["Show promotion opportunities that are profitable but constrained by availability."], "sql": ["SELECT o.opportunity_id, o.event_name, o.recommended_product_name, o.cluster_name, ROUND(o.expected_incremental_margin, 2) AS expected_incremental_margin, ROUND(o.expected_promotion_roi, 3) AS expected_promotion_roi, f.readiness_status, f.readiness_reason, f.projected_shortfall_units FROM promoflow.promoflow_gold.planner_opportunities o JOIN promoflow.promoflow_gold.promotion_feasibility f ON o.opportunity_id = f.opportunity_id WHERE o.expected_incremental_margin > 0 AND o.expected_promotion_roi > 0 AND f.readiness_status = 'CONSTRAINED' ORDER BY o.expected_incremental_margin DESC LIMIT 20"]}
+    ],
+    "join_specs": [
+      {"id": "30000000000000000000000000000001", "left": {"identifier": "promoflow.promoflow_gold.planner_opportunities", "alias": "o"}, "right": {"identifier": "promoflow.promoflow_gold.promotion_feasibility", "alias": "f"}, "sql": ["`o`.`opportunity_id` = `f`.`opportunity_id`", "--rt=FROM_RELATIONSHIP_TYPE_ONE_TO_ONE--"]}
+    ],
+    "text_instructions": [
+      {"id": "40000000000000000000000000000001", "content": ["You are Cleany's PromoFlow promotion-planning data agent for commercial leaders, promotion planners, and data teams. Lead with the business answer, then show the supporting metrics and filters. Historical promotion_explorer.modeled_uplift_rate is already stored in percentage points (for example, 24.4 means 24.4%): never multiply it by 100. In contrast, planner_opportunities.expected_modeled_uplift_pct is a decimal rate and must be multiplied by 100 for percentage presentation. Historical uplift is observational and future uplift is model-predicted; neither is a causal treatment effect. Present currency as synthetic Cleany planning estimates. A historically successful promotion has positive incremental margin and ROI; success_classification also distinguishes whether lost sales occurred. For future plans, plan_status is the approval workflow and readiness_status is the inventory-feasibility signal. READY, REVIEW, and CONSTRAINED describe supply position only; never prescribe, claim, or create a replenishment, transfer, expedite, or other supply action. Distinguish imported plans in planned_promotions from modeled opportunities in planner_opportunities. Use promotion_feasibility only for current opportunity-level availability and join it to planner_opportunities only on opportunity_id. Do not expose internal source paths, synthetic incident labels, or hidden model identifiers unless explicitly requested."]}
+    ]
+  }
+}

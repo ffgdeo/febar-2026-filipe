@@ -1,0 +1,25 @@
+resources:
+  pipelines:
+    promoflow_lakeflow:
+      name: PromoFlow promotion-planning pipeline
+      catalog: ${var.catalog}
+      schema: promoflow_bronze
+      serverless: true
+      photon: true
+      continuous: false
+      channel: PREVIEW
+      edition: ADVANCED
+      libraries:
+        - glob:
+            include: ../src/pipeline/**
+      configuration:
+        pipelines.numUpdateRetryAttempts: "0"
+        pipelines.maxFlowRetryAttempts: "0"
+        spark.sql.shuffle.partitions: auto
+      tags:
+        solution: promoflow-ai
+        customer: cleany
+        journey: promotion-planning
+      permissions:
+        - level: CAN_MANAGE
+          user_name: filipe.deo@databricks.com

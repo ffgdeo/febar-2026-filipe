@@ -1,0 +1,8 @@
+@page { size: 13.333in 7.5in; margin: 0.55in 0.7in; }
+body { font-size: 20px; line-height: 1.35; }
+h1 { font-size: 34px; color: #1b3139; margin-bottom: 0.2in; }
+h2 { font-size: 24px; color: #5d6d74; }
+hr { break-after: page; border: 0; }
+table { font-size: 15px; }
+code, pre { font-size: 15px; }
+blockquote { border-left: 6px solid #ff3621; padding-left: 16px; }

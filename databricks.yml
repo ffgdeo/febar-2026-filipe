@@ -1,0 +1,28 @@
+bundle:
+  name: promoflow-ai
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog catalog for PromoFlow AI
+    default: promoflow
+  raw_schema:
+    description: Schema that owns the raw landing volume
+    default: promoflow_raw
+  raw_volume:
+    description: Managed volume for generated source-system files
+    default: landing
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      profile: febar
+
+  prod:
+    mode: production
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}

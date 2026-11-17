@@ -1,0 +1,3 @@
+dataset,bad_rows,total_rows,bad_pct
+pos_sales,2103,420480,0.500
+inventory_snapshots,2103,420480,0.500

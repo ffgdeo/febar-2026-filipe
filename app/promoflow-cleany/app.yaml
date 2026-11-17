@@ -1,0 +1,10 @@
+command: ['pnpm', 'run', 'start']
+env:
+  - name: LAKEBASE_ENDPOINT
+    valueFrom: postgres
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse
+  - name: DATABRICKS_GENIE_SPACE_ID
+    valueFrom: genie-space
+  - name: PROMOTION_NARRATIVE_MODEL_SERVICE
+    valueFrom: promotion-narrative-model

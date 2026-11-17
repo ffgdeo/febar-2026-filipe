@@ -1,0 +1,12 @@
+dataset,row_count
+calendar,730
+distribution_centers,2
+inventory_snapshots,420480
+pos_sales,420480
+product_costs,48
+products,12
+promotions,1200
+shipments,30000
+store_clusters,6
+stores,48
+synthetic_truth,1200

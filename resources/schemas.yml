@@ -1,0 +1,22 @@
+resources:
+  schemas:
+    promoflow_bronze:
+      name: promoflow_bronze
+      catalog_name: ${var.catalog}
+      comment: Lossless Lakeflow ingestion layer for Cleany source data.
+    promoflow_silver:
+      name: promoflow_silver
+      catalog_name: ${var.catalog}
+      comment: Validated and quarantined Cleany promotion-to-shelf data.
+    promoflow_gold:
+      name: promoflow_gold
+      catalog_name: ${var.catalog}
+      comment: Governed commercial and supply-chain decision products.
+    promoflow_ml:
+      name: promoflow_ml
+      catalog_name: ${var.catalog}
+      comment: Isolated model features, evaluation data, and registered-model artifacts.
+    promoflow_cdc:
+      name: promoflow_cdc
+      catalog_name: ${var.catalog}
+      comment: Lakehouse Sync history from PromoFlow operational Lakebase tables.

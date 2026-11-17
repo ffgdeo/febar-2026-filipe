@@ -1,0 +1,54 @@
+resources:
+  jobs:
+    data_generation:
+      name: "PromoFlow synthetic data generation"
+      description: >-
+        Generates Cleany's deterministic synthetic promotion, sales, commercial-event,
+        and supporting source data in the governed raw landing volume.
+      performance_target: PERFORMANCE_OPTIMIZED
+      max_concurrent_runs: 1
+      queue:
+        enabled: true
+      tags:
+        aidevkit_project: ai-dev-kit
+        solution: promoflow-ai
+        customer: cleany
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: raw_schema
+          default: ${var.raw_schema}
+        - name: raw_volume
+          default: ${var.raw_volume}
+        - name: seed
+          default: "2026"
+        - name: inject_bad_data
+          default: "true"
+        - name: bad_data_rate
+          default: "0.005"
+      environments:
+        - environment_key: data_generation
+          spec:
+            environment_version: "4"
+            dependencies:
+              - Faker==33.1.0
+              - numpy==2.1.3
+      tasks:
+        - task_key: generate_raw_data
+          description: Generate incremental raw files and synthetic truth data.
+          spark_python_task:
+            python_file: ../src/data_generation/generator.py
+            parameters:
+              - --catalog
+              - "{{job.parameters.catalog}}"
+              - --raw-schema
+              - "{{job.parameters.raw_schema}}"
+              - --raw-volume
+              - "{{job.parameters.raw_volume}}"
+              - --seed
+              - "{{job.parameters.seed}}"
+              - --inject-bad-data
+              - "{{job.parameters.inject_bad_data}}"
+              - --bad-data-rate
+              - "{{job.parameters.bad_data_rate}}"
+          environment_key: data_generation

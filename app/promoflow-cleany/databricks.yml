@@ -1,0 +1,64 @@
+bundle:
+  name: promoflow-cleany
+
+variables:
+  postgres_branch:
+    description: Full Lakebase Postgres branch resource name. Obtain by running `databricks postgres list-branches {project-name}`, select the desired item from the output array and use its .name value. Requires the project resource name.
+  postgres_database:
+    description: Full Lakebase Postgres database resource name. Obtain by running `databricks postgres list-databases {branch-name}`, select the desired item from the output array and use its .name value. Requires the branch resource name.
+  genie_space_id:
+    description: Cleany PromoFlow Decision Agent space ID.
+  genie_space_name:
+    description: Cleany PromoFlow Decision Agent display name.
+  warehouse_id:
+    description: SQL Warehouse used for live Unity Catalog analytics.
+
+resources:
+  apps:
+    app:
+      name: 'promoflow-cleany'
+      description: 'Cleany governed promotion planning and profitability workspace'
+      source_code_path: ./
+
+      # Start the app automatically on deploy.
+      lifecycle:
+        started: true
+      # Genie runs on behalf of the signed-in user so UC permissions remain effective.
+      user_api_scopes:
+        - dashboards.genie
+        - sql
+
+      # The resources which this app has access to.
+      resources:
+        - name: postgres
+          postgres:
+            branch: ${var.postgres_branch}
+            database: ${var.postgres_database}
+            permission: CAN_CONNECT_AND_CREATE
+        - name: sql-warehouse
+          sql_warehouse:
+            id: ${var.warehouse_id}
+            permission: CAN_USE
+        - name: genie-space
+          genie_space:
+            space_id: ${var.genie_space_id}
+            name: ${var.genie_space_name}
+            permission: CAN_RUN
+        - name: promotion-narrative-model
+          uc_securable:
+            securable_type: MODEL_SERVICE
+            securable_full_name: promoflow.promoflow_ml.promo_decision_brief
+            permission: EXECUTE
+
+targets:
+  default:
+    default: true
+    workspace:
+      host: https://dbc-a947f70b-da71.cloud.databricks.com
+
+    variables:
+      postgres_branch: projects/promoflow-planning/branches/production
+      postgres_database: projects/promoflow-planning/branches/production/databases/databricks-postgres
+      warehouse_id: f85e0bab15127757
+      genie_space_id: 01f1e1d21180156faa5560a01158c566
+      genie_space_name: Cleany PromoFlow Decision Agent
